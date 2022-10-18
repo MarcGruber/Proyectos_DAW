@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('pedido_plato', function (Blueprint $table) {
             $table->id();
-            $table->string('direccion')->unique();
-            $table->number('precioTotal');
+            $table->foreignId('pedido_id')->constrained()->onDelete('cascade');
+            $table->foreignId('plato_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('pedido_plato');
     }
 };
