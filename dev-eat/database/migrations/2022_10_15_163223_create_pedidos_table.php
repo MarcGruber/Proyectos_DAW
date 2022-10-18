@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('direccion')->unique();
             $table->number('precioTotal');
+            $table->foreignId('restaurante_id');
             $table->timestamps();
         });
     }
