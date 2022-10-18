@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->number('codigo');
+            $table->string('direccion');
+            $table->number('precioTotal');
+            $table->date('fechaHora');
             $table->timestamps();
         });
     }
