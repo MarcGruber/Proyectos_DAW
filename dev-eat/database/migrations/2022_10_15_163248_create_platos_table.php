@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('platos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->number('precio');
-            $table->text('Primer Plato');
-            $table->text('Segundo Plato');
-            $table->text('Postre');
-            $table->text('Bebida');
+            $table->foreignId('restaurante_id')->constrained();
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('platos');
     }
 };
