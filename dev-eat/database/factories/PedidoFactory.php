@@ -19,12 +19,14 @@ class PedidoFactory extends Factory
  
     public function definition()
     {
-        return [
-            'name' => Str::random(10), // $this->faker->name,
 
-            $table->string('direccion');
-            $table->string('precioTotal');
-            $table->foreignId('restaurante_id')
+        return [
+
+            'name' => $this->faker->sentence(),
+            'direccion' => $this->faker->sentence(),
+            'precioTotal' => $this->faker->randomElement(['4', '3', '5']),
+            'restaurante_id' => $this->faker->randomElement(['1','2','3'])
+
         ];
     }
 }
