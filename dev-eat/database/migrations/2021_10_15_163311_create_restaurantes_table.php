@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('restaurantes', function (Blueprint $table) {
             $table->id();
-            $table->number('codigo');
+            $table->string('codigo');
             $table->string('nombre');
             $table->date('fechaHora');
-            $table->number('capacidad');
+            $table->string('capacidad');
             $table->timestamps();
         });
     }
