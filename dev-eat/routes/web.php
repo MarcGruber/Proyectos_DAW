@@ -17,9 +17,7 @@ Route::get('/', function () {
     return "welcome";
 });
 
-Route::get('menu', function () {
-    return "Bienvenido a la pagina de menus";
-});
+Route::get('/platos', [App\Http\Controllers\PlatoController::class, 'index'])->name('platos.index');
 
 Route::get('menu/create', function() {
     return "En esta pagina podras crear un menu";
