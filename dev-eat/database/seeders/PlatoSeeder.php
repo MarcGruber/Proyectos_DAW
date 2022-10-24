@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use App\Models\Plato; 
+
 class PlatoSeeder extends Seeder
 {
     /**
@@ -15,47 +17,28 @@ class PlatoSeeder extends Seeder
     public function run()
     {
         $superpowers = [
-            ['description'=>'Accelerated Healing'],
-			['description'=>'Berserk Mode'],
-			['description'=>'Bloodlust'],
-			['description'=> 'Cold Resistance'],
-			['description'=> 'Durability'],
-			['description'=> 'Electricity Resistance'],
-			['description'=>'Emotional Power Up'],
-			['description'=>'Endurance'],
-			['description'=>'Energy Resistance'],
-			['description'=> 'Fire Resistance'],
-			['description'=> 'Gamma Mutant Physiology'],
-			['description'=>'Heat Resistance'],
-			['description'=> 'Hellfire Resistance'],
-			['description'=> 'Insanity'],
-			['description'=> 'Intelligence'],
-			['description'=> 'Invulnerability'],
-			['description'=> 'Radiation Absorption'],
-			['description'=> 'Radiation Control'],
-			['description'=> 'Radiation Immunity'],
-			['description'=> 'Rage Power'],
-			['description'=> 'Reactive Power Level'],
-			['description'=> 'Regeneration'],
-			['description'=> 'Seismic Power'],
-			['description'=> 'Stamina'],
-			['description'=> 'Super Speed'],
-			['description'=> 'Super Strength'],
-			['description'=> 'Agility'],
-			['description'=> 'Danger Sense'],
-			['description'=> 'Durability'],
-			['description'=> 'Intelligence'],
-			['description'=> 'Peak Human Condition'],
-			['description'=> 'Reflexes'],
-			['description'=> 'Stamina'],
-			['description'=> 'Substance Secretion'],
-			['description'=> 'Super Speed'],
-			['description'=> 'Super Strength'],
-			['description'=> 'Wallcrawling'],
-			['description'=> 'Web Creation'],
-			['description'=> 'Acrobatics'],
+			
+            ['name'=>'macarrones', 'restaurante_id'=>2],
+			['name'=>'albondiga', 'restaurante_id'=>2],
+			['name'=>'paella' , 'restaurante_id'=>2],
+			['name'=>'batido', 'restaurante_id'=>2],
+			['name'=> 'coca cola', 'restaurante_id'=>2],
+			['name'=> 'ensalada', 'restaurante_id'=>2],
+			['name'=>'agua' , 'restaurante_id'=>2],
+			['name'=>'pollo marinado', 'restaurante_id'=>2 ],
+			['name'=>'batido de proteinas', 'restaurante_id'=>2],
+			['name'=> 'monster' , 'restaurante_id'=>1],
+			['name'=> 'bistec' , 'restaurante_id'=>1],
+			['name'=> 'pepsi', 'restaurante_id'=>1],
+			['name'=> 'tiras de pollo' , 'restaurante_id'=>1],
+			['name'=> 'pollo rebozado' , 'restaurante_id'=>1],
+			['name'=> 'frankfurt' , 'restaurante_id'=>3],
+			['name'=> 'viena' , 'restaurante_id'=>3],
+			['name'=> 'patatas fritas' , 'restaurante_id'=>3],
+			['name'=> 'patatas fritas' , 'restaurante_id'=>3],
+			
 		];
 
-		Superpower::insert($superpowers);  
+		Plato::insert($superpowers);  
     }
 }
