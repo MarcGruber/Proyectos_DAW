@@ -97,8 +97,8 @@ class PlatoController extends Controller
     {
              //
              $request->validate([
-                'nom' => 'required',
-                'precio' => 'required'           
+                'nom',
+                'precio'          
             ]);
            
             $plato = Plato::findOrFail($id);
