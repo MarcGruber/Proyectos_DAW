@@ -20,7 +20,7 @@ class RestauranteSeeder extends Seeder
         $restaurante = new Restaurante();
 
         
-        $restaurante->nombre = "kfc";
+        $restaurante->name = "kfc";
         $restaurante->capacidad = "23";
 
         $restaurante->save();
@@ -28,7 +28,7 @@ class RestauranteSeeder extends Seeder
         $restaurante2 = new Restaurante();
 
         
-        $restaurante2->nombre = "kfc";
+        $restaurante2->name = "kfc";
         $restaurante2->capacidad = "23";
 
         $restaurante2->save();
@@ -37,7 +37,7 @@ class RestauranteSeeder extends Seeder
         $restaurante3 = new Restaurante();
 
         
-        $restaurante3->nombre = "kfc";
+        $restaurante3->name = "kfc";
         $restaurante3->capacidad = "23";
 
         $restaurante3->save();
