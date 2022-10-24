@@ -18,6 +18,7 @@ return new class extends Migration
         Schema::create('platos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('precio');
             $table->foreignId('restaurante_id')->constrained();
             $table->timestamps();
         });

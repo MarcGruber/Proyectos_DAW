@@ -19,16 +19,15 @@ Route::get('/', function () {
 
 Route::get('/platos', [App\Http\Controllers\PlatoController::class, 'index'])->name('platos.index');
 
-Route::get('menu/create', function() {
-    return "En esta pagina podras crear un menu";
-});
+Route::get('/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('platos.show');
+
+Route::get('/platos/create', [App\Http\Controllers\PlatoController::class, 'create'])->name('platos.create');
 
 
+Route::post('/platos/store', [App\Http\Controllers\PlatoController::class, 'store'])->name('platos.store');
 
-Route::get('menu/{menu}/{plato?}', function($menu, $plato = null) {
-    if ($plato === null) {
-        return "Bienvenido al menu $menu";   
-    } else {
-    return "Esto es el plato $plato del menu $menu";
-    }
-});
+Route::get('/platos/destroy/{id}', [App\Http\Controllers\PlatoController::class, 'destroy'])->name('platos.destroy');
+
+Route::get('/platos/edit/{id}', [App\Http\Controllers\PlatoController::class, 'edit'])->name('platos.edit');
+
+Route::post('/platos/update/{id}', [App\Http\Controllers\PlatoController::class, 'update'])->name('platos.update');

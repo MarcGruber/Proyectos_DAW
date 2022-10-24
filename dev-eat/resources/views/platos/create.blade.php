@@ -6,8 +6,9 @@
 	<form action="{{ route('platos.store') }}" method="POST">
 	    @csrf
 	       
-	    <strong>Name:</strong>
-	    <input type="text" name="name">
+	    Name: <input type="text" name="name">
+		Precio: <input type="text" name="precio">
+		Restaurante_id: <input type="text" name="restaurante_id">
 	            
 	    <input type="submit" value="desar">     
 	   
