@@ -68,6 +68,19 @@ class RestauranteController extends Controller
                 return view('restaurantes.show',compact('restaurante'));
     }
 
+    public function showPlatos($id)
+    {
+                // Obtenim un objecte Planet a partir del seu id
+                $restaurante = Restaurante::findOrFail($id);
+
+                $restaurante = Restaurante::find(10);
+                echo $restaurante->plato->name;
+
+                // carreguem la vista i li passem el planeta que volem visualitzar
+                return view('restaurantes.show',compact('restaurante'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *

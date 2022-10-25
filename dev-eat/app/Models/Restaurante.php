@@ -11,6 +11,11 @@ class Restaurante extends Model
 
     protected $fillable = [
         'name',
-        'capacidad'
+        'capacidad',
     ];
+
+    public function platos()
+    {
+        return $this->hasMany(Plato::class);
+    }
 }

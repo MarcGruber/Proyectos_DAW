@@ -10,12 +10,12 @@
 
     
 
-    <title>Superherois!</title>
+    <title>DEV-EAT</title>
   </head>
   <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{ url('/') }}">Superherois</a>
+  <a class="navbar-brand" href="{{ url('/') }}">DEV-EAT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,10 +24,10 @@
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="{{route('planets.index')}}">Planetes</a>
+        <a class="nav-link" href="{{route('platos.index')}}">Platos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('superpowers.index')}}">Superpoders</a>
+        <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
       </li>     
       
     </ul>
