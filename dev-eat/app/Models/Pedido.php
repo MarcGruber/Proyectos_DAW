@@ -10,8 +10,10 @@ class Pedido extends Model
     use HasFactory;
 
     protected $fillable = [
-        'dirección',
-        'precioTotal'
+        'direccion',
+        'precioTotal',
+        'preuTotal',
+        'restaurante_id'
     ]; 
     
 }
