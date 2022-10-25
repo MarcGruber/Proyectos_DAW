@@ -18,13 +18,13 @@
 </div>
 
 <div>
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Name</th>           
-                <th>Capacidad</th>
-                <th>Operacions</th>
+                <th  scope="col">Id</th>
+                <th scope="col">Name</th>           
+                <th scope="col">Capacidad</th>
+                <th scope="col">Operacions</th>
                 </tr>
         </thead>
 
