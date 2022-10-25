@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PedidoController extends Controller
+use App\Models\Pedido; 
+
+class PedidosController extends Controller
 {
     /**
      * Display a listing of the resource.
