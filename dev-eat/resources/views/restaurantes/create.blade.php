@@ -1,3 +1,6 @@
+@extends('plantilla')
+@section('content')
+<br>
 <div>
 	<a href="{{ route('restaurantes.index') }}"> Tornar</a>
 </div>
@@ -25,3 +28,5 @@
     </ul>    
 @endif
 </div>
+
+@endsection

@@ -1,3 +1,7 @@
+@extends('plantilla')
+@section('content')
+<br>
+
 <div>
     @if (session('success'))
         {{ session('success') }}
@@ -10,7 +14,7 @@
 </div>
 
 <div>
-    <a href="{{ route('restaurantes.create') }}">Nou planeta</a>
+    <a href="{{ route('restaurantes.create') }}">Afegir Restaurant</a>
 </div>
 
 <div>
@@ -45,3 +49,5 @@
         </tbody>
     </table>
 </div>
+
+@endsection

@@ -1,3 +1,6 @@
+@extends('plantilla')
+@section('content')
+<br>
 <h2>Fitxa Plato</h2>
   
 <div>          
@@ -16,3 +19,5 @@
 	<strong>Restaurante id:</strong>
 	{{ $plato->restaurante_id }}
 </div>
+
+@endsection

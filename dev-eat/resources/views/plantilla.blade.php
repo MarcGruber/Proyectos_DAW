@@ -24,10 +24,10 @@
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="{{route('planets.index')}}">Planetes</a>
+        <a class="nav-link" href="{{route('platos.index')}}">Platos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('superpowers.index')}}">Superpoders</a>
+        <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
       </li>     
       
     </ul>
