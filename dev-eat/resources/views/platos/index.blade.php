@@ -19,13 +19,14 @@
 </div>
 
 <div>
-    <table>
-        <thead>
+    <table  class="table table-striped">
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Name</th>           
-                <th>Precio</th>
-                <th>Restaurante</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>           
+                <th scope="col">Precio</th>
+                <th scope="col">Restaurante</th>
+                <th scope="col">Operacions</th>
                 </tr>
         </thead>
 
