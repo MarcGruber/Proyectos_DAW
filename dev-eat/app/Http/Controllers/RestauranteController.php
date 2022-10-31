@@ -16,11 +16,21 @@ class RestauranteController extends Controller
     public function index()
     {
                // Recuperem una col·lecció amb tots els planetes de la BD
-               $restaurantes = Restaurante::all();
+               $restaurantes = Restaurante::Paginate (10);
     
                // Carreguem la vista planets/index.blade.php 
                // i li passem la llista de planetes
                return view('restaurantes.index',compact('restaurantes'));
+    }
+
+    public function home()
+    {
+               // Recuperem una col·lecció amb tots els planetes de la BD
+               $restaurantes = Restaurante::Paginate (10);
+    
+               // Carreguem la vista planets/index.blade.php 
+               // i li passem la llista de planetes
+               return view('welcome',compact('restaurantes'));
     }
 
     /**
