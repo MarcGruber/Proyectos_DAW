@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Plato; 
+use App\Models\Restaurante;
 
 class PlatoController extends Controller
 {
@@ -15,11 +16,13 @@ class PlatoController extends Controller
      */
     public function index()
     {
-        $platos = Plato::all();
+        $platos = Plato::Paginate (10);
+        $restaurantes = Restaurante::all();
+
     
         // Carreguem la vista planets/index.blade.php 
         // i li passem la llista de planetes
-        return view('platos.index',compact('platos'));
+        return view('platos.index',compact('platos', 'restaurantes'));
     }
 
     /**
@@ -29,7 +32,8 @@ class PlatoController extends Controller
      */
     public function create()
     {
-        return view("platos.create");
+        $restaurantes = Restaurante::Paginate (10);
+        return view("platos.create", compact('restaurantes'));
     }
 
     /**

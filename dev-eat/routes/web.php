@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-return view('welcome');
-});
+
+Route::get('/', [App\Http\Controllers\RestauranteController::class, 'home'])->name('welcome');
 
 ///////// RESTAURANTES ///////////////
 Route::get('/restaurantes', [App\Http\Controllers\RestauranteController::class, 'index'])->name('restaurantes.index');

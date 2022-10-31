@@ -15,8 +15,11 @@
 </div>
 
 <div>
-    <a href="{{ route('platos.create') }}">Nou plat</a>     
+    <a href="{{ route('platos.create') }}"><button type="button" class="btn btn-primary">Nou Plat</button></a> 
+
 </div>
+
+<br>    
 
 <div>
     <table  class="table table-striped">
@@ -39,22 +42,25 @@
             <tr>
                 <td>{{ $plato->id }}</td>
                 <td>{{ $plato->name }}</td>
-                <td>{{$plato->precio}}</td>
+                <td>{{$plato->precio}}€</td>
                 <td>{{$plato->restaurante_id}}</td>
                
                 <td>                
-                    <a href="{{ route('platos.show',$plato->id) }}">Mostrar</a> 
+                    <a href="{{ route('platos.show',$plato->id) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
                  
                              
-                    <a href="{{ route('platos.destroy',$plato->id) }}">Esborrar</a> 
-                 
-                             
-                    <a href="{{ route('platos.edit',$plato->id) }}">Actualitzar</a> 
-                 </td>
+                    <a href="{{ route('platos.edit',$plato->id) }}"><button type="button" class="btn btn-secondary">Actualizar</button></a> 
+                    
+                    <a href="{{ route('platos.destroy',$plato->id) }}"><button type="button" class="btn btn-danger">Borrar</button></a> 
+                    
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+       <div>
+        {{ $platos->links('pagination::bootstrap-4') }}
+       </div>   
 </div>
 
 @endsection
