@@ -1,3 +1,7 @@
+@extends('plantilla')
+@section('content')
+<br>
+
 <div>
     @if (session('success'))
         {{ session('success') }}
@@ -10,17 +14,17 @@
 </div>
 
 <div>
-    <a href="{{ route('restaurantes.create') }}">Nou planeta</a>
+    <a href="{{ route('restaurantes.create') }}"><button type="button" class="btn btn-primary">Afegir Restaurant</button></a>
 </div>
-
+<br>
 <div>
-    <table>
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Name</th>           
-                <th>Capacidad</th>
-                <th>Operacions</th>
+                <th  scope="col">Id</th>
+                <th scope="col">Name</th>           
+                <th scope="col">Capacidad</th>
+                <th scope="col">Operacions</th>
                 </tr>
         </thead>
 
@@ -32,16 +36,19 @@
                 <td>{{ $restaurante->capacidad }}</td>
                
                 <td>                
-                   <a href="{{ route('restaurantes.show',$restaurante->id) }}">Mostrar</a> 
+                   <a href="{{ route('restaurantes.show',$restaurante->id) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
+                
+                   <a href="{{ route('restaurantes.edit',$restaurante->id) }}"><button type="button" class="btn btn-secondary">Actualizar</button></a> 
+                            
+                   <a href="{{ route('restaurantes.destroy',$restaurante->id) }}"><button type="button" class="btn btn-danger">Borrar</button></a> 
                 
                             
-                   <a href="{{ route('restaurantes.destroy',$restaurante->id) }}">Esborrar</a> 
-                
-                            
-                   <a href="{{ route('restaurantes.edit',$restaurante->id) }}">Actualitzar</a> 
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    {{ $restaurantes->links('pagination::bootstrap-4') }}
 </div>
+
+@endsection

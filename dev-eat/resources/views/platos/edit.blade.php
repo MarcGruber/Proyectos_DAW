@@ -1,3 +1,7 @@
+@extends('plantilla')
+@section('content')
+<br>
+
 <div>
 	<a href="{{ route('platos.index') }}"> Tornar</a>
 </div>          
@@ -20,3 +24,5 @@
 	   
 	</form>
 </div>
+
+@endsection

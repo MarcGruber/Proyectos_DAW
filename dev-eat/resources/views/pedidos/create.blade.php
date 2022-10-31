@@ -1,19 +1,16 @@
-@extends('plantilla')
-@section('content')
-<br>
 <div>
-	<a href="{{ route('restaurantes.index') }}"> Tornar</a>
+	<a href="{{ route('pedidos.index') }}"> Tornar</a>
 </div>
 
 <div>           
-	<form action="{{ route('restaurantes.store') }}" method="POST">
+	<form action="{{ route('pedidos.store') }}" method="POST">
 	    @csrf
 	       
 	    <strong>Name:</strong>
 	    <input type="text" name="name">
-		<strong>Capacidad:</strong>
-        <input type="text" name="capacidad">
-	            
+		<input type="text" name="direccion">  ç
+		<input type="text" name="precioTotal">
+		<input type="text" name="restaurante_id">      
 	    <input type="submit" value="desar">     
 	   
 	</form>
@@ -28,5 +25,3 @@
     </ul>    
 @endif
 </div>
-
-@endsection
