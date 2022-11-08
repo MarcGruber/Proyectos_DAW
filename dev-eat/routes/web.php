@@ -54,6 +54,7 @@ Route::get('/platos/edit/{id}', [App\Http\Controllers\PlatoController::class, 'e
 
 Route::post('/platos/update/{id}', [App\Http\Controllers\PlatoController::class, 'update'])->name('platos.update');
 
+
 ///////// PEDIDOS ///////////////
 
 
@@ -72,3 +73,11 @@ Route::get('/pedidos/edit/{id}', [App\Http\Controllers\PedidosController::class,
 
 Route::post('/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
