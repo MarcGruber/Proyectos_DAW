@@ -21,7 +21,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
 
 
+
+// Route::group(['middleware'=>['auth','rol']],
+
 Route::group(['middleware'=>'auth'], function() {
+
 
 Route::get('/', [App\Http\Controllers\RestauranteController::class, 'home'])->name('welcome');
 
