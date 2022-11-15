@@ -13,6 +13,11 @@ class RestauranteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
                // Recuperem una col·lecció amb tots els planetes de la BD
