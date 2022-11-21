@@ -1,3 +1,5 @@
+@extends('plantilla')
+@section('content')
 <div>
     @if (session('success'))
         {{ session('success') }}
@@ -16,9 +18,10 @@
 <div>
     <table>
         <thead>
-            <tr>
+            <tr style="padding:5em;">
                 <th>Id</th>
-                <th>Name</th>           
+                <th>Direccion</th>           
+                <th>Precio Total</th>           
                 <th>Operacions</th>
                 </tr>
         </thead>
@@ -27,16 +30,19 @@
             @foreach ($pedidos as $pedido)
             <tr>
                 <td>{{ $pedido->id }}</td>
-                <td>{{ $pedido->name }}</td>
+                <td>{{ $pedido->direccion }}</td>
+                <td>{{ $pedido->precioTotal }}€</td>
                
-                <td>                
-                   <a href="{{ route('pedidos.show',$pedido->id) }}">Mostrar</a> 
+                <td>   
+                    <a href="{{ route('pedidos.show',$pedido->id) }}"><button type="button" class="btn btn-secondary">Agregar Platos</button></a>     
+                
+                   <a href="{{ route('pedidos.show',$pedido->id) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
+                
+                   <a href="{{ route('pedidos.edit',$pedido->id) }}"><button type="button" class="btn btn-secondary">Actualizar</button></a> 
+                            
+                   <a href="{{ route('pedidos.destroy',$pedido->id) }}"><button type="button" class="btn btn-danger">Borrar</button></a> 
                 
                             
-                   <a href="{{ route('pedidos.destroy',$pedido->id) }}">Esborrar</a> 
-                
-                            
-                   <a href="{{ route('pedidos.edit',$pedido->id) }}">Actualitzar</a> 
                 </td>
             </tr>
             @endforeach
@@ -44,3 +50,4 @@
     </table>
     
 </div>
+@endsection

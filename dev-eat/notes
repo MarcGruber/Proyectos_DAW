@@ -1,0 +1,4 @@
+1r -> crear roles cliente, restaruatnte y admin
+2n -> crear una vista para clientes que puedan seleccionar restaurante y se guarde la id
+3r -> crear una vista que guarde id pedido y pueda añadir platos
+ 

@@ -1,3 +1,5 @@
+@extends('plantilla')
+@section('content')
 <div>
 	<a href="{{ route('pedidos.index') }}"> Tornar</a>
 </div>          
@@ -20,3 +22,4 @@
 	   
 	</form>
 </div>
+@endsection
