@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
      <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="../css/app.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+<!-- Scripts -->
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    
 
     <title>DEV-EAT</title>
   </head>
@@ -33,8 +33,8 @@
       </li>     
       <li class="nav-item">
         <a class="nav-link" href="{{route('pedidos.index')}}">Pedidos</a>
-      </li> 
-      
+      </li>  
+
       @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -65,11 +65,17 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest    
+                        @endguest
+
+
+    <ul class="navbar-nav mr-auto">
+      
+  
+  
     </ul>
-   
-   
   </div>
+
+ 
 </nav>
 
 
@@ -77,31 +83,12 @@
      @yield('content')
 </div>
 
-<div id="menu" style="display: flex; margin: 2em 8% 2em 8%;flex-flow: row wrap;">
-@foreach ($restaurantes as $restaurante)
-
-                            
-
-<div class="card" style="width: 18rem; margin: 1em ">
- {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
- <div class="card-body" style="min-width: 25%">
-   <h5 class="card-title">{{ $restaurante->name }}</h5>
-   <p class="card-text">{{ $restaurante->capacidad }}</p>
-   <a class="btn btn-primary" href="{{ route('restaurantes.show',$restaurante->id) }}">Seleccionar</a> 
- </div>
-</div>
-
-
-@endforeach
-
-</div>
-<footer>
-  <p style="text-align: center">Made by Marc Gruber Lopéz ❤️👨‍💻</p>
-</footer>
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-
+<footer>
+  <p style="text-align: center">Made by Marc Gruber Lopéz ❤️👨‍💻</p>
+</footer>
   </body>
 </html>

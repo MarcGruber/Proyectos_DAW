@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('restaurantes', function (Blueprint $table) {
-            $table->id();
-            $table->number('codigo');
-            $table->string('nombre');
-            $table->date('fechaHora');
-            $table->number('capacidad');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('role_id')->default(0);
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('restaurantes');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };
