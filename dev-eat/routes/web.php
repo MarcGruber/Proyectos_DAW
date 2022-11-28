@@ -24,22 +24,27 @@ Route::get('/', [App\Http\Controllers\RestauranteController::class, 'home'])->na
 // Route::group(['middleware'=>['auth','rol']],
 Route::group(['middleware'=>['auth','role:cliente']], function() {
     //cliente
-    Route::get('/restaurantes', [App\Http\Controllers\RestauranteController::class, 'index'])->name('restaurantes.index');
-Route::get('/restaurantes/show/{id}', [App\Http\Controllers\RestauranteController::class, 'show'])->name('restaurantes.show');    
-Route::get('/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('platos.show');
+    Route::get('/client/restaurantes', [App\Http\Controllers\RestauranteController::class, 'index'])->name('restaurantes.index');
+Route::get('/client/restaurantes/show/{id}', [App\Http\Controllers\RestauranteController::class, 'show'])->name('restaurantes.show');    
+Route::get('/client/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('platos.show');
 
-Route::get('/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
+Route::get('/client/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
 
-Route::get('/pedidos/edit/{id}', [App\Http\Controllers\PedidosController::class, 'edit'])->name('pedidos.edit');
+Route::get('/client/pedidos/edit/{id}', [App\Http\Controllers\PedidosController::class, 'edit'])->name('pedidos.edit');
 
-Route::post('/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
+Route::post('/client/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
 
-Route::get('/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
+Route::get('/client/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
 
-Route::get('/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('pedidos.create');
+Route::get('/client/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('pedidos.create');
 });
 
-Route::group(['middleware'=>'role:restaurante'], function() {
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+
+Route::group(['middleware'=>['auth','role:restaurante']], function() {
 
 
 Route::get('/', [App\Http\Controllers\RestauranteController::class, 'home'])->name('welcome');
@@ -105,11 +110,11 @@ Route::post('/pedidos/update/{id}', [App\Http\Controllers\PedidosController::cla
 
 });
 
-Route::group(['middleware'=>'role:admin'], function() {
+Route::group(['middleware'=>['auth','role:admin']], function() {
 
 
   
-    
+    /*
     ///////// RESTAURANTES ///////////////
     Route::get('/restaurantes', [App\Http\Controllers\RestauranteController::class, 'index'])->name('restaurantes.index');
     
@@ -167,7 +172,7 @@ Route::group(['middleware'=>'role:admin'], function() {
     
     Route::post('/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
     
-    
+    */
     
     
     });
