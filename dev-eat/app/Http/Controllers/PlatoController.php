@@ -80,7 +80,15 @@ class PlatoController extends Controller
               // Obtenim un objecte Planet a partir del seu id
               $plato = Plato::findOrFail($id);
               // carreguem la vista i li passem el planeta que volem visualitzar
-              return view('platos.show',compact('plato')); 
+
+              $roleUser = auth()->user()->role;
+            if($roleUser == 'cliente' ){
+                return view('clientes.platos.show',compact('plato'));
+            }
+            if ($roleUser == 'admin') {
+                return view('platos.show',compact('plato'));
+            }
+
     }
 
     /**

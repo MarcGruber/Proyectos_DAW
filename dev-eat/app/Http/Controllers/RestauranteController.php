@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Models\Restaurante;
 
+
 class RestauranteController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,13 +21,25 @@ class RestauranteController extends Controller
        // $this->middleware('auth');
     }
     public function index()
+    
     {
-               // Recuperem una col·lecció amb tots els planetes de la BD
+        $roleUser = auth()->user()->role;
+
+        // Recuperem una col·lecció amb tots els planetes de la BD
                $restaurantes = Restaurante::Paginate (10);
     
                // Carreguem la vista planets/index.blade.php 
                // i li passem la llista de planetes
-               return view('restaurantes.index',compact('restaurantes'));
+
+        if($roleUser == 'cliente' ){
+            return view('clientes.RestaurantesIndex',compact('restaurantes'));
+        }
+        if ($roleUser == 'admin') {
+            return view('restaurantes.index',compact('restaurantes'));
+        }
+        
+               
+
     }
 
     public function home()
@@ -80,7 +94,15 @@ class RestauranteController extends Controller
                 // Obtenim un objecte Planet a partir del seu id
                 $restaurante = Restaurante::findOrFail($id);
                 // carreguem la vista i li passem el planeta que volem visualitzar
-                return view('restaurantes.show',compact('restaurante'));
+
+                $roleUser = auth()->user()->role;
+
+                if($roleUser == 'cliente' ){
+                    return view('clientes.restaurantes.show',compact('restaurante'));
+                }
+                if ($roleUser == 'admin') {
+                    return view('restaurantes.show',compact('restaurante'));
+                }
     }
 
     public function showPlatos($id)

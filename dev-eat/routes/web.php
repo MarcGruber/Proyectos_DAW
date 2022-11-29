@@ -24,9 +24,12 @@ Route::get('/', [App\Http\Controllers\RestauranteController::class, 'home'])->na
 // Route::group(['middleware'=>['auth','rol']],
 Route::group(['middleware'=>['auth','role:cliente']], function() {
     //cliente
-    Route::get('/client/restaurantes', [App\Http\Controllers\RestauranteController::class, 'index'])->name('restaurantes.index');
-Route::get('/client/restaurantes/show/{id}', [App\Http\Controllers\RestauranteController::class, 'show'])->name('restaurantes.show');    
-Route::get('/client/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('platos.show');
+    
+Route::get('/client', [App\Http\Controllers\RestauranteController::class, 'home'])->name('welcome');
+
+Route::get('/client/restaurantes', [App\Http\Controllers\RestauranteController::class, 'index'])->name('restaurantes.index');
+Route::get('/client/restaurantes/show/{id}', [App\Http\Controllers\RestauranteController::class, 'show'])->name('Clientrestaurantes.show');    
+Route::get('/client/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('ClientePlatos.show');
 
 Route::get('/client/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
 

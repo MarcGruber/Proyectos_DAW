@@ -21,8 +21,11 @@ class PedidosController extends Controller
 
     public function index()
     {
+        $pedido = Pedido::findOrFail($id);
+
+        $pedido = Pedido::find(10);
+        echo $restaurante->plato->name;
         
-        $pedidos = Pedido::all();
     
         
         return view('pedidos.index',compact('pedidos'));
