@@ -70,6 +70,7 @@ class RestauranteController extends Controller
      */
     public function store(Request $request)
     {
+            
                 // Validació dels camps
                 $request->validate([
                     'name' => 'required',            
@@ -77,7 +78,13 @@ class RestauranteController extends Controller
                 ]);
             
                 // Primera forma: breu,insegura, necessita tenir array $fillable al model
-                Restaurante::create($request->all());
+                $restaurante =  new Restaurante;
+
+                $restaurante->user_id = auth()->user()->id;
+                $restaurante->name = $request->name;
+                $restaurante->capacidad = $request->capacidad;
+
+                $restaurante->save();
              
                 return redirect()->route('restaurantes.index')
                                 ->with('success','Restaurante creat correctament.');
@@ -96,6 +103,7 @@ class RestauranteController extends Controller
                 // carreguem la vista i li passem el planeta que volem visualitzar
 
                 $roleUser = auth()->user()->role;
+                // mostrar id -> auth()->user()->id;
 
                 if($roleUser == 'cliente' ){
                     return view('clientes.restaurantes.show',compact('restaurante'));

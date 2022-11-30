@@ -87,7 +87,7 @@
  <div class="card-body" style="min-width: 25%">
    <h5 class="card-title">{{ $restaurante->name }}</h5>
    <p class="card-text">{{ $restaurante->capacidad }}</p>
-   <a class="btn btn-primary" href="{{ route('restaurantes.show',$restaurante->id) }}">Seleccionar</a> 
+   <a class="btn btn-primary" href="{{ route('Clientrestaurantes.show',$restaurante->id) }}">Seleccionar</a> 
  </div>
 </div>
 

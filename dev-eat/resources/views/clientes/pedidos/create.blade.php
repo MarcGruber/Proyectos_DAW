@@ -5,15 +5,13 @@
 </div>
 
 <div>           
-	<form action="{{ route('pedidos.store') }}" method="POST">
+	<form action="{{ route('ClientePedidos.store',2) }}" method="POST">
 	    @csrf
 	       
 	    <strong>Name:</strong>
 	    <input type="text" name="name"><br>
 		<strong>Direccion:</strong>
 		<input type="text" name="direccion"><br>
-		<strong>Precio Total:</strong>
-		<input type="text" name="precioTotal"><br>
 		<strong>restaurante id:</strong>
 		<input type="text" name="restaurante_id"><br>
 	    <input type="submit" value="desar">     

@@ -31,15 +31,19 @@ Route::get('/client/restaurantes', [App\Http\Controllers\RestauranteController::
 Route::get('/client/restaurantes/show/{id}', [App\Http\Controllers\RestauranteController::class, 'show'])->name('Clientrestaurantes.show');    
 Route::get('/client/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('ClientePlatos.show');
 
-Route::get('/client/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
+Route::get('/client/restaurantes/show/{id}/pedidos/destroy/{idPedido}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
 
-Route::get('/client/pedidos/edit/{id}', [App\Http\Controllers\PedidosController::class, 'edit'])->name('pedidos.edit');
+Route::get('/client/restaurantes/show/{id}/pedidos/edit/{idPedido}', [App\Http\Controllers\PedidosController::class, 'edit'])->name('pedidos.edit');
 
-Route::post('/client/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
+Route::post('/client/restaurantes/show/{id}/pedidos/update/{idPedido}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
 
-Route::get('/client/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
+Route::get('/client/restaurantes/show/{id}/pedidos/show/{idPedido}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
 
-Route::get('/client/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('pedidos.create');
+Route::get('/client/restaurantes/show/{id}/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('ClientePedidos.create');
+
+Route::post('/client/restaurantes/show/{id}/pedidos/store', [App\Http\Controllers\PedidosController::class, 'store'])->name('ClientePedidos.store');
+
+Route::get('/client/restaurantes/show/{id}/pedidos/index', [App\Http\Controllers\PedidosController::class, 'index'])->name('ClientePedidos.index');
 });
 
 
@@ -100,7 +104,7 @@ Route::get('/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class,
 Route::get('/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('pedidos.create');
 
 
-Route::post('/pedidos/store', [App\Http\Controllers\PedidosController::class, 'store'])->name('pedidos.store');
+
 
 Route::get('/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
 

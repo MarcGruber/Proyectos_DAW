@@ -1,7 +1,7 @@
 @extends('plantilla')
 @section('content')
 <br>
-<h2>Fitxa {{ $restaurante->name }}</h2>
+<h2 style="text-transform: uppercase;">{{ $restaurante->name }}</h2>
   
 <div>          
 	<a href="{{ route('restaurantes.index') }}"> 

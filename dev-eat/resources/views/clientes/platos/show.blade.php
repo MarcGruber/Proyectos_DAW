@@ -1,7 +1,7 @@
 @extends('plantilla')
 @section('content')
 <br>
-<h2>Fitxa Plato</h2>
+<h3 style=" text-transform: uppercase;">{{ $plato->name }}</h3>
   
 <div>          
 	<a href="{{ route('Clientrestaurantes.show',$plato->restaurante_id) }}"> 

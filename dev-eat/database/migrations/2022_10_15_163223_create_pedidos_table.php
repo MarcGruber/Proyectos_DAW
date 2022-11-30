@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->string('direccion');
-            $table->string('precioTotal');
+            $table->foreignId('user_id');
             $table->foreignId('restaurante_id')->constrained();
+            $table->string('precioTotal');
             $table->timestamps();
         });
     }

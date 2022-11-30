@@ -1,29 +1,35 @@
 @extends('plantilla')
 @section('content')
 <br>
-<h2>Fitxa {{ $restaurante->name }}</h2>
+<h2 style="text-transform: uppercase;">{{ $restaurante->name }}</h2>
   
-<div>          
-	<a href="{{ route('restaurantes.index') }}"> 
+<div class="d-flex flex-row">          
+	<h3><a href="{{ route('restaurantes.index') }}"> 
 		Tornar
-	</a>
+	</a></h3>
+	<h3 style="margin-left: 30px;"><a href="{{ route('ClientePedidos.create',$restaurante->id) }}">Pedidos</a></h3>
 </div>
-
-<div>
-	<strong>Name:</strong>
-	{{ $restaurante->name }} <br>
-	<strong>Capacidad:</strong>
-	{{ $restaurante->capacidad }}
+<hr>
+<div class="d-flex flex-row">
+	<strong>Name: {{ $restaurante->name }}</strong>
+	 <br>
+	<strong style="margin-left: 30px;">Capacidad: {{ $restaurante->capacidad }}</strong>
+	
 </div>
 
 <strong>Platos:</strong>
 <ul style="display: flex; max-width: 70%">
      @foreach($restaurante->platos as $plato)
-          <li class="listaPlatosRestaurante" style="list-style:none; background-color: rgb(212, 212, 212); padding:1em; margin:1em; border-radius: 0.5em; width: 25%;"><br>
-			<a style="" href="{{ route('ClientePlatos.show',$plato->id) }}">{{ $plato->name }}</a>
-			<b>precio: {{$plato->precio}}€</b>
-		 </li>
-		  
+		  <div class="card  hover-overlay" style="width: 18rem; margin: 1em;">
+ {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+ <a href="{{ route('ClientePlatos.show',$plato->id) }}" style="text-decoration:none;"> 
+ 	<div class="card-body" style="min-width: 25%">
+    <h5 class="card-title">{{ $plato->name }}</h5>
+    <p class="card-text" style="color:black;">precio: {{$plato->precio}}€</p>
+ 	</div>
+</a>
+
+</div>
      @endforeach
 </ul>
 

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('restaurantes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_role')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->string('name');
             $table->string('capacidad');
             $table->timestamps();

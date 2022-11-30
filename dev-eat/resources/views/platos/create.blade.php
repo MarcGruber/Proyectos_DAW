@@ -10,9 +10,9 @@
 	<form action="{{ route('platos.store') }}" method="POST" id="formPlatos">
 	    @csrf
 	       
-	    Name: <input type="text" name="name" value="{{old("name")}}">
+	    Name: <input type="text" name="name" value="{{old('name')}}">
 
-		Precio: <input type="text" name="precio" value="{{old("precio")}}">
+		Precio: <input type="text" name="precio" value="{{old('precio')}}">
 
 		<select name="restaurante_id" id="restaurante_id" form="formPlatos">
 			@foreach ($restaurantes as $restaurante)

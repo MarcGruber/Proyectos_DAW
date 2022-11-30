@@ -21,11 +21,11 @@ class PedidosController extends Controller
 
     public function index()
     {
-        $pedido = Pedido::findOrFail($id);
-
-        $pedido = Pedido::find(10);
-        echo $restaurante->plato->name;
+        $pedidos = Pedido::all();
         
+        for ($i=0; $i < $pedidos; $i++) { 
+            dd($pedidos[$i]->user_id);
+        }
     
         
         return view('pedidos.index',compact('pedidos'));
@@ -38,7 +38,7 @@ class PedidosController extends Controller
      */
     public function create()
     {
-        return view("pedidos.create");
+        return view("clientes.pedidos.create");
     }
 
     /**
@@ -53,11 +53,19 @@ class PedidosController extends Controller
         $request->validate([
             'name' => 'required',            
         ]);
-    
-        // Primera forma: breu,insegura, necessita tenir array $fillable al model
-        Pedido::create($request->all());
-     
-        return redirect()->route('pedidos.index')
+
+        // Primera forma: breu,insegura, necessita tenir array $fillable al model  
+        $pedido =  new Pedido;
+
+        $pedido->direccion = $request->direccion;
+        $pedido->user_id = auth()->user()->id;
+        $pedido->restaurante_id = $request->restaurante_id;
+        $pedido->precioTotal = 0;
+
+        $pedido->save();
+
+
+        return redirect()->route('welcome')
                         ->with('success','Pedido creat correctament.');
         // Segona forma: més llarg...més segur..
         
