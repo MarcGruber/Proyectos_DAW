@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('restaurante_id')->constrained();
             $table->string('precioTotal');
+            $table->string('estado')->default(0);
             $table->timestamps();
         });
     }

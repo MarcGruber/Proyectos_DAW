@@ -37,13 +37,15 @@ Route::get('/client/restaurantes/show/{id}/pedidos/edit/{idPedido}', [App\Http\C
 
 Route::post('/client/restaurantes/show/{id}/pedidos/update/{idPedido}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
 
-Route::get('/client/restaurantes/show/{id}/pedidos/show/{idPedido}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
+Route::get('/client/restaurantes/show/{id}/pedidos/show/{idPedido}', [App\Http\Controllers\PedidosController::class, 'show'])->name('ClientePedidos.show');
 
 Route::get('/client/restaurantes/show/{id}/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('ClientePedidos.create');
 
 Route::post('/client/restaurantes/show/{id}/pedidos/store', [App\Http\Controllers\PedidosController::class, 'store'])->name('ClientePedidos.store');
 
 Route::get('/client/restaurantes/show/{id}/pedidos/index', [App\Http\Controllers\PedidosController::class, 'index'])->name('ClientePedidos.index');
+
+Route::get('/client/restaurantes/show/{id}/pedidos/pagar/{idPedido}', [App\Http\Controllers\PedidosController::class, 'pagar'])->name('ClientePedidos.pagar');
 });
 
 

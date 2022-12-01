@@ -4,16 +4,18 @@
 <h2 style="text-transform: uppercase;">{{ $restaurante->name }}</h2>
   
 <div class="d-flex flex-row">          
-	<h3><a href="{{ route('restaurantes.index') }}"> 
+	<h4 style="margin-right: 30px;"><a href="{{ route('welcome') }}"> 
 		Tornar
-	</a></h3>
-	<h3 style="margin-left: 30px;"><a href="{{ route('ClientePedidos.create',$restaurante->id) }}">Pedidos</a></h3>
+	</a></h4>
+	<h4 style="margin-right: 30px;"><a href="{{ route('ClientePedidos.create',$restaurante->id) }}">Crear Pedido</a></h4>
+
+	<h4 style="margin-right: 30px;"><a href="{{ route('ClientePedidos.index',$restaurante->id) }}">Ver tus Pedidos</a></h4>
 </div>
 <hr>
 <div class="d-flex flex-row">
-	<strong>Name: {{ $restaurante->name }}</strong>
+	<strong>Nombre: {{ $restaurante->name }}</strong>
 	 <br>
-	<strong style="margin-left: 30px;">Capacidad: {{ $restaurante->capacidad }}</strong>
+	<strong style="margin-left: 30px;">Capacidad del establecimiento: {{ $restaurante->capacidad }} personas</strong>
 	
 </div>
 

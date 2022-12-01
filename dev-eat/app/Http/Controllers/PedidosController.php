@@ -19,16 +19,17 @@ class PedidosController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index($id)
     {
-        $pedidos = Pedido::all();
+        //$pedidos = Pedido::all();
+        $pedidos = Pedido::where('user_id', auth()->user()->id)
+        ->where('restaurante_id', $id)
+        ->get();
         
-        for ($i=0; $i < $pedidos; $i++) { 
-            dd($pedidos[$i]->user_id);
-        }
-    
         
-        return view('pedidos.index',compact('pedidos'));
+        
+        
+        return view('clientes.pedidos.index',compact('pedidos'));
     }
 
     /**
@@ -86,6 +87,21 @@ class PedidosController extends Controller
         $pedido = Pedido::findOrFail($id);
         
         return view('pedidos.show',compact('pedido'));
+    }
+
+
+    public function pagar($id, $idPedido)
+    {
+        $pedido = Pedido::findOrFail($idPedido);
+        $pedido->estado = 1;
+        $pedido->save();
+
+
+        $pedidos = Pedido::where('user_id', auth()->user()->id)
+        ->where('restaurante_id', $id)
+        ->get();
+        
+        return view('clientes.pedidos.index',compact('pedidos'));
     }
 
     /**
