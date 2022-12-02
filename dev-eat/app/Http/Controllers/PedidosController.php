@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Pedido; 
+use App\Models\Plato; 
 
 class PedidosController extends Controller
 {
@@ -85,8 +86,8 @@ class PedidosController extends Controller
     public function show($id)
     {
         $pedido = Pedido::findOrFail($id);
-        
-        return view('pedidos.show',compact('pedido'));
+        $platos = Plato::all();
+        return view('clientes.pedidos.show',compact('pedido', 'platos'));
     }
 
 
@@ -163,5 +164,12 @@ class PedidosController extends Controller
         }   
         return redirect()->route('pedidos.index')
                         ->with('success','Pedido esborrat correctament.');    
+    }
+
+    
+    public function agregarPlato($idPedido, $idPlato){
+        $pedido = Pedido::findOrFail($id);
+        dd($pedido->platos());
+
     }
 }

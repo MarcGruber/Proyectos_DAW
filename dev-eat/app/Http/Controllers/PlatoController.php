@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Plato; 
 use App\Models\Restaurante;
+use App\Models\Pedido;
 
 class PlatoController extends Controller
 {
@@ -149,4 +150,5 @@ class PlatoController extends Controller
            return redirect()->route('platos.index')
                            ->with('success','Plato esborrat correctament.');   
     }
+
 }
