@@ -46,7 +46,15 @@ Route::post('/client/restaurantes/show/{id}/pedidos/store', [App\Http\Controller
 Route::get('/client/restaurantes/show/{id}/pedidos/index', [App\Http\Controllers\PedidosController::class, 'index'])->name('ClientePedidos.index');
 
 Route::get('/client/restaurantes/show/{id}/pedidos/pagar/{idPedido}', [App\Http\Controllers\PedidosController::class, 'pagar'])->name('ClientePedidos.pagar');
+
+
+Route::get('/client/restaurantes/show/{id}/pedidos/show/{idPedido}/agregar/{idPlato}', [App\Http\Controllers\PedidosController::class, 'agregarPlato'])->name('AgregarPedidos.agregar');
+
+
+
 });
+
+
 
 
 //////////////////////////////////////////////////////////

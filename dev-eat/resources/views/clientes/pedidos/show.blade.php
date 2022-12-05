@@ -37,7 +37,7 @@
                 <td>{{$plato->restaurante_id}}</td>
                
                 <td>                
-					<a href="{{ route('platos.destroy',$plato->id) }}"><button type="button" class="btn btn-success">Agregar</button></a> 
+					<a href="{{ route('AgregarPedidos.agregar',[$pedido->restaurante_id, $pedido->id, $plato->id]) }}"><button type="button" class="btn btn-success">Agregar</button></a> 
 					
                     <a href="{{ route('platos.show',$plato->id) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
                              

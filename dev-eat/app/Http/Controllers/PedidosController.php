@@ -83,7 +83,7 @@ class PedidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showPlatos($id)
     {
         $pedido = Pedido::findOrFail($id);
         $platos = Plato::all();
@@ -167,9 +167,10 @@ class PedidosController extends Controller
     }
 
     
-    public function agregarPlato($idPedido, $idPlato){
-        $pedido = Pedido::findOrFail($id);
-        dd($pedido->platos());
+    public function agregarPlato($idRestaurante,$idPedido, $idPlato){
+        $pedido = Pedido::findOrFail($idPedido);
+      
+        $pedido->platos()->attach($idPlato);
 
     }
 }
