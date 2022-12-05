@@ -60,19 +60,19 @@ Route::get('/', [App\Http\Controllers\RestauranteController::class, 'home'])->na
 
 ///////// RESTAURANTES ///////////////
 
-Route::get('/restaurantes/show/{id}', [App\Http\Controllers\RestauranteController::class, 'show'])->name('restaurantes.show');
+Route::get('/restaurantes/show/{id}', [App\Http\Controllers\RestauranteController::class, 'show'])->name('restaurantesrestaurantes.show');
 
 
-Route::get('/restaurantes/create', [App\Http\Controllers\RestauranteController::class, 'create'])->name('restaurantes.create');
+Route::get('/restaurantes/create', [App\Http\Controllers\RestauranteController::class, 'create'])->name('restaurantesrestaurantes.create');
 
 
-Route::post('/restaurantes/store', [App\Http\Controllers\RestauranteController::class, 'store'])->name('restaurantes.store');
+Route::post('/restaurantes/store', [App\Http\Controllers\RestauranteController::class, 'store'])->name('restaurantesrestaurantes.store');
 
-Route::get('/restaurantes/destroy/{id}', [App\Http\Controllers\RestauranteController::class, 'destroy'])->name('restaurantes.destroy');
+Route::get('/restaurantes/destroy/{id}', [App\Http\Controllers\RestauranteController::class, 'destroy'])->name('restaurantesrestaurantes.destroy');
 
-Route::get('/restaurantes/edit/{id}', [App\Http\Controllers\RestauranteController::class, 'edit'])->name('restaurantes.edit');
+Route::get('/restaurantes/edit/{id}', [App\Http\Controllers\RestauranteController::class, 'edit'])->name('restaurantesrestaurantes.edit');
 
-Route::post('/restaurantes/update/{id}', [App\Http\Controllers\RestauranteController::class, 'update'])->name('restaurantes.update');
+Route::post('/restaurantes/update/{id}', [App\Http\Controllers\RestauranteController::class, 'update'])->name('restaurantesrestaurantes.update');
 
 
 
@@ -80,39 +80,39 @@ Route::post('/restaurantes/update/{id}', [App\Http\Controllers\RestauranteContro
 ///////// PLATOS ///////////////
 
 
-Route::get('/platos', [App\Http\Controllers\PlatoController::class, 'index'])->name('platos.index');
+Route::get('/platos', [App\Http\Controllers\PlatoController::class, 'index'])->name('restaurantesplatos.index');
 
-Route::get('/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('platos.show');
+Route::get('/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('restaurantesplatos.show');
 
-Route::get('/platos/create', [App\Http\Controllers\PlatoController::class, 'create'])->name('platos.create');
+Route::get('/platos/create', [App\Http\Controllers\PlatoController::class, 'create'])->name('restaurantesplatos.create');
 
 
-Route::post('/platos/store', [App\Http\Controllers\PlatoController::class, 'store'])->name('platos.store');
+Route::post('/platos/store', [App\Http\Controllers\PlatoController::class, 'store'])->name('restaurantesplatos.store');
 
-Route::get('/platos/destroy/{id}', [App\Http\Controllers\PlatoController::class, 'destroy'])->name('platos.destroy');
+Route::get('/platos/destroy/{id}', [App\Http\Controllers\PlatoController::class, 'destroy'])->name('restaurantesplatos.destroy');
 
-Route::get('/platos/edit/{id}', [App\Http\Controllers\PlatoController::class, 'edit'])->name('platos.edit');
+Route::get('/platos/edit/{id}', [App\Http\Controllers\PlatoController::class, 'edit'])->name('restaurantesplatos.edit');
 
-Route::post('/platos/update/{id}', [App\Http\Controllers\PlatoController::class, 'update'])->name('platos.update');
+Route::post('/platos/update/{id}', [App\Http\Controllers\PlatoController::class, 'update'])->name('restaurantesplatos.update');
 
 
 ///////// PEDIDOS ///////////////
 
 
-Route::get('/pedidos', [App\Http\Controllers\PedidosController::class, 'index'])->name('pedidos.index');
+Route::get('/pedidos', [App\Http\Controllers\PedidosController::class, 'index'])->name('restaurantespedidos.index');
 
-Route::get('/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
+Route::get('/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class, 'show'])->name('restaurantespedidos.show');
 
-Route::get('/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('pedidos.create');
-
-
+Route::get('/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('restaurantespedidos.create');
 
 
-Route::get('/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
 
-Route::get('/pedidos/edit/{id}', [App\Http\Controllers\PedidosController::class, 'edit'])->name('pedidos.edit');
 
-Route::post('/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
+Route::get('/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('restaurantespedidos.destroy');
+
+Route::get('/pedidos/edit/{id}', [App\Http\Controllers\PedidosController::class, 'edit'])->name('restaurantespedidos.edit');
+
+Route::post('/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('restaurantespedidos.update');
 
 
 
