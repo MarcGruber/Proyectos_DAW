@@ -24,13 +24,13 @@
 
             <tbody>
 			@foreach ($platos as $plato)
-
 @if ($plato->restaurante_id == $pedido->restaurante_id)
 		
        
                 
        
             <tr>
+            <td>{{ $pedido->id }}</td>
                 <td>{{ $plato->id }}</td>
                 <td>{{ $plato->name }}</td>
                 <td>{{$plato->precio}}€</td>
@@ -50,6 +50,8 @@
             @endforeach
         </tbody>
     </table>
+
+    
 
 
 </div>

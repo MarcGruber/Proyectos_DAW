@@ -83,6 +83,18 @@ class PedidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public function showPedido($id)
+    {
+        $pedido = Pedido::findOrFail($id);
+        $idRestaurante = $pedido->restaurante_id;
+        $platosPedido = $pedido->platos()->where('pedido_id', $pedido->id)->get();
+        return view('clientes.pedidos.showPedido',compact('platosPedido','pedido'));
+    }
+
+
+
     public function showPlatos($id)
     {
         $pedido = Pedido::findOrFail($id);
@@ -169,7 +181,16 @@ class PedidosController extends Controller
     
     public function agregarPlato($idRestaurante,$idPedido, $idPlato){
         $pedido = Pedido::findOrFail($idPedido);
-      
+        $plato = Plato::findOrFail($idPlato);
+
+        $precioPlato = $plato->precio;
+        $precioTotal = $pedido->precioTotal;
+
+        $precioSumado = $precioTotal + $precioPlato;
+
+        $pedido->precioTotal = $precioSumado;
+        $pedido->save();
+
         $pedido->platos()->attach($idPlato);
 
     }

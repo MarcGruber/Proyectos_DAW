@@ -33,6 +33,7 @@
                 
                 @php($haypedidos = true)
                     <tr>
+                    <td>{{ $pedido->id }}</td>
                         <td>{{ $pedido->updated_at }}</td>
                         <td>{{ $pedido->direccion }}</td>
                         <td>{{ $pedido->precioTotal }}€</td>
@@ -46,7 +47,7 @@
                         <td>   
                         <a href="{{ route('ClientePedidos.show',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-info">Agregar Platos</button></a>     
                         
-                        <a href="{{ route('ClientePedidos.show',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
+                        <a href="{{ route('ClientePedidos.showPlatos',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
                         
                         @if ( $pedido->estado == 0 )
                         <a href="{{ route('ClientePedidos.pagar', [$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-success">Pagar</button></a> 

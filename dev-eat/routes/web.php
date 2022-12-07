@@ -37,7 +37,9 @@ Route::get('/client/restaurantes/show/{id}/pedidos/edit/{idPedido}', [App\Http\C
 
 Route::post('/client/restaurantes/show/{id}/pedidos/update/{idPedido}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
 
-Route::get('/client/restaurantes/show/{id}/pedidos/show/{idPedido}', [App\Http\Controllers\PedidosController::class, 'show'])->name('ClientePedidos.show');
+Route::get('/client/restaurantes/show/{id}/pedidos/show/{idPedido}', [App\Http\Controllers\PedidosController::class, 'showPlatos'])->name('ClientePedidos.show');
+
+Route::get('/client/restaurantes/show/{id}/pedidos/showPedido/{idPedido}', [App\Http\Controllers\PedidosController::class, 'showPedido'])->name('ClientePedidos.showPlatos');
 
 Route::get('/client/restaurantes/show/{id}/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('ClientePedidos.create');
 
