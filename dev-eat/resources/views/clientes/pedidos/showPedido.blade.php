@@ -1,7 +1,7 @@
 @extends('plantilla')
 @section('content')
 <h2>Fitxa Pedido</h2>
-  <h4>Estado : {{$pedido->estado}}</h4>
+  <h4>Estado : {{$pedido->id}}</h4>
 <div>          
 	<a href="{{ route('pedidos.index') }}"> 
 		Tornar
@@ -16,6 +16,7 @@
                 <th scope="col">Name</th>           
                 <th scope="col">Precio</th>
                 <th scope="col">Operacions</th>
+
                 </tr>
         </thead>
 

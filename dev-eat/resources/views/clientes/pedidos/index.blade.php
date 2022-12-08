@@ -11,9 +11,6 @@
     @endif
 </div>
 
-<div>
-    <a href="{{ route('pedidos.create') }}">Nova comanda</a>
-</div>
 
 <div>
     <table class="table">
@@ -23,33 +20,33 @@
                 <th scope="col">Direccion</th>           
                 <th scope="col">Precio Total</th>           
                 <th scope="col">Estado</th>           
-                <th scope="col">Operacions</th>
+                <th scope="col">Operacions </th>
             </tr>
         </thead>
 
-            <tbody> 
+            <tbody > 
             @php($haypedidos = false)
             @foreach ($pedidos as $pedido)
                 
                 @php($haypedidos = true)
-                    <tr>
-                    <td>{{ $pedido->id }}</td>
-                        <td>{{ $pedido->updated_at }}</td>
-                        <td>{{ $pedido->direccion }}</td>
-                        <td>{{ $pedido->precioTotal }}€</td>
+                        <td style="text-align: center;" >{{ $pedido->updated_at }}</td>
+                        <td style="text-align: center;" >{{ $pedido->direccion }}</td>
+                        <td style="text-align: center;" >{{ $pedido->precioTotal }}€</td>
                         @if ( $pedido->estado == 0 )
                         <td><strong><u> NO PAGADO</u></strong></td>
                         @else
-                        <td><strong><u>PAGADO</u></strong></td>
+                        <td style="background-color: rgb(4, 141, 4); color : rgb(0, 0, 0);text-align: center;"><strong><u>PAGADO</u></strong></td>
                         @endif
                         
                     
                         <td>   
-                        <a href="{{ route('ClientePedidos.show',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-info">Agregar Platos</button></a>     
-                        
+                            
+                          
                         <a href="{{ route('ClientePedidos.showPlatos',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
                         
                         @if ( $pedido->estado == 0 )
+                        <a href="{{ route('ClientePedidos.show',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-info">Agregar Platos</button></a>     
+
                         <a href="{{ route('ClientePedidos.pagar', [$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-success">Pagar</button></a> 
                         @endif
                        

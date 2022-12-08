@@ -28,18 +28,30 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+
+  @if(auth()->user()->role == "cliente")
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{{route('platos.index')}}">Platos</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
+        <a class="nav-link" href="{{ url('/client') }}">Restaurantes</a>
       </li>     
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('pedidos.index')}}">Pedidos</a>
-      </li>  
+
+    @endif
+
+    @if(auth()->user()->role == "admin")
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('platos.index')}}">Platos</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
+        </li>     
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('pedidos.index')}}">Pedidos</a>
+        </li>  
+      @endif
 
       @guest
                             @if (Route::has('login'))

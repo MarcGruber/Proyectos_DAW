@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Pedido; 
 use App\Models\Plato; 
+use App\Models\Restaurante; 
 
 class PedidosController extends Controller
 {
@@ -38,9 +39,10 @@ class PedidosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view("clientes.pedidos.create");
+        $restaurante = Restaurante::findOrFail($id);
+        return view("clientes.pedidos.create", compact('restaurante'));
     }
 
     /**
@@ -85,20 +87,20 @@ class PedidosController extends Controller
      */
 
 
-    public function showPedido($id)
+    public function showPedido($id, $idPedido)
     {
-        $pedido = Pedido::findOrFail($id);
-        $idRestaurante = $pedido->restaurante_id;
-        $platosPedido = $pedido->platos()->where('pedido_id', $pedido->id)->get();
+        $pedido = Pedido::findOrFail($idPedido);
+        $platosPedido = $pedido->platos()->where('pedido_id', $idPedido)->get();
         return view('clientes.pedidos.showPedido',compact('platosPedido','pedido'));
     }
 
 
 
-    public function showPlatos($id)
+    public function showPlatos($request,$id)
     {
         $pedido = Pedido::findOrFail($id);
         $platos = Plato::all();
+
         return view('clientes.pedidos.show',compact('pedido', 'platos'));
     }
 
@@ -180,18 +182,22 @@ class PedidosController extends Controller
 
     
     public function agregarPlato($idRestaurante,$idPedido, $idPlato){
+        
         $pedido = Pedido::findOrFail($idPedido);
         $plato = Plato::findOrFail($idPlato);
+        if ($pedido->estado == 0) {
 
-        $precioPlato = $plato->precio;
-        $precioTotal = $pedido->precioTotal;
+            $precioPlato = $plato->precio;
+            $precioTotal = $pedido->precioTotal;
 
-        $precioSumado = $precioTotal + $precioPlato;
+            $precioSumado = $precioTotal + $precioPlato;
 
-        $pedido->precioTotal = $precioSumado;
-        $pedido->save();
+            $pedido->precioTotal = $precioSumado;
+            $pedido->save();
 
-        $pedido->platos()->attach($idPlato);
-
+            $pedido->platos()->attach($idPlato);
+        } else {
+            return response('El pedido ya esta pagado', 200);
+        }
     }
 }

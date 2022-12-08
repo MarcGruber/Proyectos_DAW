@@ -17,23 +17,34 @@
   <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{ url('/') }}">DEV-EAT</a>
+  <a class="navbar-brand" href="{{ url('/client') }}">DEV-EAT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  @if(auth()->user()->role == "cliente")
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      
       <li class="nav-item">
-        <a class="nav-link" href="{{route('platos.index')}}">Platos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
+        <a class="nav-link" href="{{ url('/client') }}">Restaurantes</a>
       </li>     
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('pedidos.index')}}">Pedidos</a>
-      </li> 
+
+    @endif
+
+    @if(auth()->user()->role == "admin")
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('platos.index')}}">Platos</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
+        </li>     
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('pedidos.index')}}">Pedidos</a>
+        </li>  
+      @endif
       
       @guest
                             @if (Route::has('login'))

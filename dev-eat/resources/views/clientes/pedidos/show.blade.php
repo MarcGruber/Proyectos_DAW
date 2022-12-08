@@ -14,7 +14,7 @@
 	<table  class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Id</th>
+                <th scope="col">Id zz {{$pedido->id}}</th>
                 <th scope="col">Name</th>           
                 <th scope="col">Precio</th>
                 <th scope="col">Restaurante</th>
@@ -30,7 +30,6 @@
                 
        
             <tr>
-            <td>{{ $pedido->id }}</td>
                 <td>{{ $plato->id }}</td>
                 <td>{{ $plato->name }}</td>
                 <td>{{$plato->precio}}€</td>

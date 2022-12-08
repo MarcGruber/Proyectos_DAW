@@ -1,8 +1,8 @@
 @extends('plantilla')
 @section('content')
-<div>
-	<a href="{{ route('pedidos.index') }}"> Tornar</a>
-</div>
+
+
+<h1>CREAR PEDIDO ({{$restaurante->name}})</h1>
 
 <div>           
 	<form action="{{ route('ClientePedidos.store',2) }}" method="POST">
@@ -13,7 +13,7 @@
 		<strong>Direccion:</strong>
 		<input type="text" name="direccion"><br>
 		<strong>restaurante id:</strong>
-		<input type="text" name="restaurante_id"><br>
+		<input type="text" name="restaurante_id" value="{{$restaurante->id}}"  readonly><br>
 	    <input type="submit" value="desar">     
 	   
 	</form>

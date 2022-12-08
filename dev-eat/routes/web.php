@@ -109,20 +109,20 @@ Route::post('/platos/update/{id}', [App\Http\Controllers\PlatoController::class,
 ///////// PEDIDOS ///////////////
 
 
-Route::get('/pedidos', [App\Http\Controllers\PedidosController::class, 'index'])->name('pedidos.index');
+  Route::get('/pedidos', [App\Http\Controllers\PedidosController::class, 'index'])->name('pedidos.index');
 
-Route::get('/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
+// Route::get('/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
 
 Route::get('/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('pedidos.create');
 
 
 
 
-Route::get('/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
+// Route::get('/pedidos/destroy/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])->name('pedidos.destroy');
 
-Route::get('/pedidos/edit/{id}', [App\Http\Controllers\PedidosController::class, 'edit'])->name('pedidos.edit');
+// Route::get('/pedidos/edit/{id}', [App\Http\Controllers\PedidosController::class, 'edit'])->name('pedidos.edit');
 
-Route::post('/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
+// Route::post('/pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])->name('pedidos.update');
 
 
 
