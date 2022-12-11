@@ -195,7 +195,7 @@ class PedidosController extends Controller
         $pedido = Pedido::findOrFail($id);
         // intentem esborrar-lo, En cas que un superheroi tingui aquest planeta assignat
         // es produiria un error en l'esborrat!!!!
-        if($pedido->estado == 0 && auth()->user()->role == 'restaurante'){
+        if($pedido->estado == 0){
         try {
             $result = $pedido->delete();
 
@@ -231,6 +231,27 @@ class PedidosController extends Controller
             $pedido->save();
 
             $pedido->platos()->attach($idPlato);
+            return redirect()->route('ClientePedidos.index', $idRestaurante);
+        } else {
+            return response('El pedido ya esta pagado', 200);
+        }
+    }
+    
+    public function deletePlato($idRestaurante,$idPedido, $idPlato){
+        
+        $pedido = Pedido::findOrFail($idPedido);
+        $plato = Plato::findOrFail($idPlato);
+        if ($pedido->estado == 0) {
+
+            $precioPlato = $plato->precio;
+            $precioTotal = $pedido->precioTotal;
+
+            $precioSumado = $precioTotal - $precioPlato;
+            $pedido->precioTotal = $precioSumado;
+            $pedido->save();
+            
+            $pedido->platos()->detach($idPlato);
+            return redirect()->route('ClientePedidos.index', $idRestaurante);
         } else {
             return response('El pedido ya esta pagado', 200);
         }

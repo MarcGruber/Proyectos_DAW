@@ -53,7 +53,11 @@
   
         <li class="nav-item">
           <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
-        </li>     
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('users.index')}}">Usuarios</a>
+        </li> 
+   
 
       @endif
 

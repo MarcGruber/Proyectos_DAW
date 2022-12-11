@@ -3,11 +3,7 @@
 <br>
 <h2>Fitxa Plato</h2>
   
-<div>          
-	<a href="{{ route('platos.index') }}"> 
-		Tornar
-	</a>
-</div>
+
 
 <div>
 	<strong>Name:</strong>

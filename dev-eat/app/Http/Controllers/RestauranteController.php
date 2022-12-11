@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Plato; 
 use App\Models\Restaurante;
 use App\Models\Pedido;
+use App\Models\User;
 
 
 class RestauranteController extends Controller
@@ -133,7 +134,8 @@ class RestauranteController extends Controller
                     return view('clientes.restaurantes.show',compact('restaurante'));
                 }
                 if ($roleUser == 'admin') {
-                    return view('restaurantes.show',compact('restaurante'));
+                    $user = User::findOrFail($id);
+                    return view('restaurantes.show',compact('restaurante','user'));
                 }
                 if ($roleUser == 'restaurante') {
                     return view('viewsRestaurantes.restaurantes.show',compact('restaurante'));

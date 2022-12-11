@@ -19,27 +19,19 @@ class RestauranteSeeder extends Seeder
 
         $restaurante = new Restaurante();
 
-        
-        $restaurante->name = "kfc";
-        $restaurante->capacidad = "23";
+        $restaurante->user_id = 16;
+        $restaurante->name = "Los Pollos Hermanos";
+        $restaurante->capacidad = "50";
 
         $restaurante->save();
 ////////////////////////////////////////////////////////////////
         $restaurante2 = new Restaurante();
 
-        
-        $restaurante2->name = "kfc";
-        $restaurante2->capacidad = "23";
+        $restaurante2->user_id = 17;
+        $restaurante2->name = "Pizzeria Generica";
+        $restaurante2->capacidad = "30";
 
         $restaurante2->save();
 
-///////////////////////////////////////////////////////////////
-        $restaurante3 = new Restaurante();
-
-        
-        $restaurante3->name = "kfc";
-        $restaurante3->capacidad = "23";
-
-        $restaurante3->save();
     }
 }

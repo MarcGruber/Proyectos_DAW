@@ -13,9 +13,11 @@
 	<strong>Name:</strong>
 	{{ $restaurante->name }} <br>
 	<strong>Capacidad:</strong>
-	{{ $restaurante->capacidad }}
+	{{ $restaurante->capacidad }} <br>
+	<strong>PROPIETARIO:</strong>
+	{{ $user->name }}
 </div>
-
+<br><hr>
 <strong>Platos:</strong>
 <ul style="display: flex; max-width: 70%">
      @foreach($restaurante->platos as $plato)

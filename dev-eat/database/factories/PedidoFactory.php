@@ -26,9 +26,10 @@ class PedidoFactory extends Factory
         return [
 
             'direccion' => $this->faker->sentence(),
+            'user_id' => $this->faker->randomElement([18,19,20]),
+            'restaurante_id' => $this->faker->randomElement([22,23]),
             'precioTotal' => $this->faker->randomElement(['10', '15', '12']),
-            'restaurante_id' => $this->faker->randomElement([1,2,3])
-
+            'estado' => $this->faker->randomElement([1,0])
         ];
     }
 }

@@ -15,8 +15,8 @@ class UserController extends Controller
     public function index()
     {       
         if (auth()->user()->role == 'admin') {
-            $Users = User::Paginate (10);
-            return view('restaurantes.show',compact('users'));
+            $users = User::Paginate (10);
+            return view('admin.users.index',compact('users'));
         }
     }
 
@@ -28,7 +28,7 @@ class UserController extends Controller
     public function create()
     {
         if (auth()->user()->role == 'admin') {
-            return view('restaurantes.show',compact('restaurante'));
+          
         }
     }
 
@@ -41,7 +41,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         if (auth()->user()->role == 'admin') {
-            return view('restaurantes.show',compact('restaurante'));
+            
         }
     }
 
@@ -54,7 +54,8 @@ class UserController extends Controller
     public function show($id)
     {
         if (auth()->user()->role == 'admin') {
-            return view('restaurantes.show',compact('restaurante'));
+            $user = User::findOrFail($id);
+            return view('admin.users.show',compact('user'));
         }
     }
 
@@ -91,7 +92,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+
         if (auth()->user()->role == 'admin') {
+            $user = User::findOrFail($id);
+            $result = $user->delete();
+            $msg = $user->role.' eliminat correctament';
+            return redirect()->route('users.index')
+            ->with('success',$msg);
         }
     }
 }

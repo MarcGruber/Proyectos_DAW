@@ -2,10 +2,7 @@
 @section('content')
 <h2>Fitxa Pedido</h2>
   <h4>Estado : {{$pedido->id}}</h4>
-<div>          
-		Tornar
-	</a>
-</div>
+
 
 <div>
 	
@@ -25,11 +22,12 @@
                 <td>{{ $platoPedido->name }}</td>
                 <td>{{ $platoPedido->precio }}€</td>
                
-                <td>                
-					
-                             
-                    
-                    
+                <td>   
+
+                @if(auth()->user()->role == 'cliente')
+				<a href="{{ route('ClientePedidos.deletePlato',[$pedido->restaurante_id, $pedido->id, $platoPedido->id]) }}"><button type="button" class="btn btn-danger">Quitar del pedido</button></a> 	
+                @endif  
+                      
                 </td>
             </tr>
         @endforeach
