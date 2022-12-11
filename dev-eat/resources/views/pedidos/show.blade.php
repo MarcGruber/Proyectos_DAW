@@ -1,3 +1,5 @@
+@extends('plantilla')
+@section('content')
 <h2>Fitxa Pedido</h2>
   
 <div>          
@@ -10,3 +12,4 @@
 	<strong>Name:</strong>
 	{{ $pedido->name }}
 </div>
+@endsection

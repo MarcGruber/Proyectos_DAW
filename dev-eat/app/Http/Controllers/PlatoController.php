@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Plato; 
 use App\Models\Restaurante;
+use App\Models\Pedido;
 
 class PlatoController extends Controller
 {
@@ -14,6 +15,11 @@ class PlatoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $platos = Plato::Paginate (10);
@@ -32,8 +38,21 @@ class PlatoController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->role == 'restaurante') {
+            $restaurantes = [];
+ $restaurantsUsuari = Restaurante::Paginate(30);
+                foreach ($restaurantsUsuari as $key) {
+                    if ($key->user_id == auth()->user()->id) {
+                        array_push($restaurantes, $key);
+                    }
+                }
+            
+                return view('viewsRestaurantes.platos.create',compact('restaurantes'));       
+
+
+         }
         $restaurantes = Restaurante::Paginate (10);
-        return view("platos.create", compact('restaurantes'));
+        return view("viewsRestaurantes.platos.create", compact('restaurantes'));
     }
 
     /**
@@ -59,7 +78,7 @@ class PlatoController extends Controller
              $plato->restaurante_id = $request->restaurante_id;
              $plato->save();
             
-             return redirect()->route('platos.index')
+             return redirect()->route('restaurantes.show', $request->restaurante_id)
              ->with('success','Plat creat correctament');
         
     }
@@ -75,7 +94,18 @@ class PlatoController extends Controller
               // Obtenim un objecte Planet a partir del seu id
               $plato = Plato::findOrFail($id);
               // carreguem la vista i li passem el planeta que volem visualitzar
-              return view('platos.show',compact('plato')); 
+
+              $roleUser = auth()->user()->role;
+            if($roleUser == 'cliente' ){
+                return view('clientes.platos.show',compact('plato'));
+            }
+            if ($roleUser == 'admin') {
+                return view('platos.show',compact('plato'));
+            }
+            if ($roleUser == 'restaurante') {
+                return view('viewsRestaurantes.platos.show',compact('plato'));
+            }
+
     }
 
     /**
@@ -87,7 +117,7 @@ class PlatoController extends Controller
     public function edit($id)
     {
         $plato = Plato::findOrFail($id);
-        return view('platos.edit',compact('plato'));
+        return view('viewsRestaurantes.platos.edit',compact('plato'));
     }
 
     /**
@@ -101,16 +131,15 @@ class PlatoController extends Controller
     {
              //
              $request->validate([
-                'nom',
+                'name',
                 'precio'          
             ]);
-           
             $plato = Plato::findOrFail($id);
             $plato->update($request->all());
+            
         
-        
-            return redirect()->route('platos.index')
-                            ->with('success','Plato actualitzat correctament');
+            return redirect()->route('restaurantes.show', $plato->restaurante_id)
+            ->with('success','Restaurante editat correctament.');
     }
 
     /**
@@ -127,7 +156,8 @@ class PlatoController extends Controller
            // es produiria un error en l'esborrat!!!!
            try {
                $result = $plato->delete();
-               
+               return redirect()->route('restaurantes.show', $plato->restaurante_id)
+               ->with('success','Restaurante editat correctament.');
            }
            catch(\Illuminate\Database\QueryException $e) {
                 return redirect()->route('platos.index')
@@ -136,4 +166,5 @@ class PlatoController extends Controller
            return redirect()->route('platos.index')
                            ->with('success','Plato esborrat correctament.');   
     }
+
 }
