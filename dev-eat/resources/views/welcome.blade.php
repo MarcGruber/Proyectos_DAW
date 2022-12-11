@@ -12,17 +12,23 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 
+
+
     <title>DEV-EAT</title>
   </head>
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  @if(auth()->user()->role == "cliente")
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
   <a class="navbar-brand" href="{{ url('/client') }}">DEV-EAT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  @if(auth()->user()->role == "cliente")
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -32,18 +38,39 @@
     @endif
 
     @if(auth()->user()->role == "admin")
+
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <a class="navbar-brand" href="{{ url('/client') }}">DEV-EAT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('platos.index')}}">Platos</a>
-        </li>
+
   
         <li class="nav-item">
           <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
         </li>     
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('pedidos.index')}}">Pedidos</a>
-        </li>  
+
+      @endif
+
+      @if(auth()->user()->role == "restaurante")
+
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <a class="navbar-brand" href="{{ url('/') }}">DEV-EAT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+           
+          
       @endif
       
       @guest
@@ -87,8 +114,12 @@
 <div class="container"> 
      @yield('content')
 </div>
+@if(auth()->user()->role == "restaurante")
+<a href="{{ route('restaurantes.create' )}}"><button>CREAR RESTAURANTE</button></a>
+@endif
 
 <div id="menu" style="display: flex; margin: 2em 8% 2em 8%;flex-flow: row wrap;">
+
 @foreach ($restaurantes as $restaurante)
 
                             
@@ -98,7 +129,15 @@
  <div class="card-body" style="min-width: 25%">
    <h5 class="card-title">{{ $restaurante->name }}</h5>
    <p class="card-text">{{ $restaurante->capacidad }}</p>
+   @if(auth()->user()->role == "cliente")
    <a class="btn btn-primary" href="{{ route('Clientrestaurantes.show',$restaurante->id) }}">Seleccionar</a> 
+   @endif
+   @if(auth()->user()->role == "restaurante")
+   <a class="btn btn-primary" href="{{ route('restaurantes.show',$restaurante->id) }}">Seleccionar</a> 
+   @endif
+   @if(auth()->user()->role == "admin")
+   <a class="btn btn-primary" href="{{ route('Clientrestaurantes.show',$restaurante->id) }}">Seleccionar</a> 
+   @endif
  </div>
 </div>
 
@@ -107,7 +146,7 @@
 
 </div>
 <footer>
-  <p style="text-align: center">Made by Marc Gruber Lopéz ❤️👨‍💻 and Bryan Couto Ruiz</p>
+  <p style="text-align: center">Made by Marc Gruber Lpez ❤️👨‍💻 and Bryan Couto Ruiz</p>
 </footer>
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

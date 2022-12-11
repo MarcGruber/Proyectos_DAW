@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('direccion');
             $table->foreignId('user_id');
-            $table->foreignId('restaurante_id')->constrained();
+            $table->foreignId('restaurante_id')->constrained()->cascadeOnDelete();
             $table->string('precioTotal');
             $table->string('estado')->default(0);
             $table->timestamps();

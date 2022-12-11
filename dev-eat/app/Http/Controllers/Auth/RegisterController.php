@@ -64,7 +64,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if($data['role'] == 'admin' || $data['role'] == 'cliente' || $data['role'] == 'restaurante'){
+        
+        if($data['role'] == 'admin' && $data['clave'] == 'Qwerty1234' || $data['role'] == 'cliente' || $data['role'] == 'restaurante'){
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -72,6 +73,7 @@ class RegisterController extends Controller
             'role' => $data['role'],
         ]);
     } else {
+
         return response('El rol no es valido', 200);
     }
     }

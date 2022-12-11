@@ -19,7 +19,7 @@
   <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  @if(strcmp(auth()->user()->id ,"cliente"))
+  @if(auth()->user()->role == "cliente")
   <a class="navbar-brand" href="{{ url('/client') }}">DEV-EAT</a>
   @else 
   <a class="navbar-brand" href="{{ url('/') }}">DEV-EAT</a>
@@ -38,20 +38,29 @@
 
     @endif
 
+    @if(auth()->user()->role == "restaurante")
+
+
+  
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+@endif
+
+
     @if(auth()->user()->role == "admin")
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('platos.index')}}">Platos</a>
-        </li>
+  
   
         <li class="nav-item">
           <a class="nav-link" href="{{route('restaurantes.index')}}">Restaurantes</a>
         </li>     
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('pedidos.index')}}">Pedidos</a>
-        </li>  
+    
+</div> 
       @endif
+
+      
 
       @guest
                             @if (Route::has('login'))
@@ -106,7 +115,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
 <footer>
-  <p style="text-align: center">Made by Marc Gruber Lopéz ❤️👨‍💻 </p>
+  <p style="text-align: center">Made by Marc Gruber López ❤️👨‍💻 </p>
 </footer>
   </body>
 </html>

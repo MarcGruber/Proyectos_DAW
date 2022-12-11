@@ -42,15 +42,11 @@
                         <td>   
                             
                           
-                        <a href="{{ route('ClientePedidos.showPlatos',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
+                        <a href="{{ route('RestaurantePedidos.showPlatos',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
                         
-                        @if ( $pedido->estado == 0 )
-                        <a href="{{ route('ClientePedidos.show',[$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-info">Agregar Platos</button></a>     
+                       
 
-                        <a href="{{ route('ClientePedidos.pagar', [$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-success">Pagar</button></a> 
-
-                        <a href="{{ route('pedidos.destroy', [$pedido->restaurante_id,$pedido->id]) }}"><button type="button" class="btn btn-danger">Eliminar</button></a> 
-                        @endif
+                        
                        
                                     
                         </td>

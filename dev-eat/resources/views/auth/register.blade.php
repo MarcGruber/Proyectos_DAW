@@ -2,19 +2,11 @@
 
 @section('content')
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">Features</a>
-        <a class="nav-item nav-link" href="#">Pricing</a>
-      </div>
-    </div>
-  </nav>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register ADMINISTRADOR') }}</div>
+                <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -71,10 +63,14 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Tipo Usuario:') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('*Tipo Usuario:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="role" value="admin" readonly>
+                                         <select name="role">
+                                             <option value="cliente" selected>Cliente</option>
+                                             <option value="restaurante">Restaurante</option>
+                                            <option value="admin">Administrador</option>
+                                        </select>
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
@@ -85,7 +81,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Clave Admin:') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('**Clave Admin:') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="password" class="form-control @error('email') is-invalid @enderror" name="clave" >
@@ -97,6 +93,9 @@
                                 @enderror
                             </div>
                         </div>
+
+                        *(admin, cliente, restaurante) <br>
+                        ** Solo Admin
 
 
                                 @error('email')

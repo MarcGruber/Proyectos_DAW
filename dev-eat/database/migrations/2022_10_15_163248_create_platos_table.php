@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('precio');
-            $table->foreignId('restaurante_id')->constrained();
+            $table->foreignId('restaurante_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

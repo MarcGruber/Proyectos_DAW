@@ -66,7 +66,7 @@ Route::get('/client/restaurantes/show/{id}/pedidos/show/{idPedido}/agregar/{idPl
 Route::group(['middleware'=>['auth','role:restaurante']], function() {
 
 
-Route::get('/', [App\Http\Controllers\RestauranteController::class, 'home'])->name('welcome');
+Route::get('/', [App\Http\Controllers\RestauranteController::class, 'home'])->name('welcomeRestaurante');
 
 ///////// RESTAURANTES ///////////////
 
@@ -86,13 +86,12 @@ Route::post('/restaurantes/update/{id}', [App\Http\Controllers\RestauranteContro
 
 
 
-
 ///////// PLATOS ///////////////
 
 
-Route::get('/platos', [App\Http\Controllers\PlatoController::class, 'index'])->name('platos.index');
+Route::get('/restaurante/{id}/platos', [App\Http\Controllers\RestauranteController::class, 'showPlatos'])->name('platos.index');
 
-Route::get('/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('platos.show');
+Route::get('restaurantes/platos/show/{id}', [App\Http\Controllers\PlatoController::class, 'show'])->name('platos.show');
 
 Route::get('/platos/create', [App\Http\Controllers\PlatoController::class, 'create'])->name('platos.create');
 
@@ -109,9 +108,9 @@ Route::post('/platos/update/{id}', [App\Http\Controllers\PlatoController::class,
 ///////// PEDIDOS ///////////////
 
 
-  Route::get('/pedidos', [App\Http\Controllers\PedidosController::class, 'index'])->name('pedidos.index');
-
-// Route::get('/pedidos/show/{id}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
+  Route::get('restaurante{id}/pedidos', [App\Http\Controllers\PedidosController::class, 'index'])->name('pedidos.index');
+  Route::get('/restaurant/restaurantes/show/{id}/pedidos/showPedido/{idPedido}', [App\Http\Controllers\PedidosController::class, 'showPedido'])->name('RestaurantePedidos.showPlatos');
+Route::get('restaurante{id}/pedidos/show/{idPedido}', [App\Http\Controllers\PedidosController::class, 'show'])->name('pedidos.show');
 
 Route::get('/pedidos/create', [App\Http\Controllers\PedidosController::class, 'create'])->name('pedidos.create');
 
