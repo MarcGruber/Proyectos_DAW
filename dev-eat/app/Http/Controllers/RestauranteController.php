@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Plato; 
 use App\Models\Restaurante;
+use App\Models\Pedido;
+use App\Models\User;
 
 
 class RestauranteController extends Controller
@@ -44,11 +47,28 @@ class RestauranteController extends Controller
 
     public function home()
     {
-               // Recuperem una col·lecció amb tots els planetes de la BD
+         if (auth()->user()->role == 'restaurante') {
+            $restaurantes = [];
+ $restaurantsUsuari = Restaurante::Paginate(30);
+                foreach ($restaurantsUsuari as $key) {
+                    if ($key->user_id == auth()->user()->id) {
+                        array_push($restaurantes, $key);
+                    }
+                }
+            
+                return view('welcome',compact('restaurantes'));       
+
+
+         } ;
+
+        // Recuperem una col·lecció amb tots els planetes de la BD
                $restaurantes = Restaurante::Paginate (10);
     
                // Carreguem la vista planets/index.blade.php 
                // i li passem la llista de planetes
+        if (auth()->user()->role == 'restaurante') {
+        }
+
                return view('welcome',compact('restaurantes'));
     }
 
@@ -85,6 +105,11 @@ class RestauranteController extends Controller
                 $restaurante->capacidad = $request->capacidad;
 
                 $restaurante->save();
+
+                if(auth()->user()->role == 'restaurante'){
+                    return redirect()->route('welcomeRestaurante')
+                    ->with('success','Restaurante creat correctament.');
+                }
              
                 return redirect()->route('restaurantes.index')
                                 ->with('success','Restaurante creat correctament.');
@@ -109,7 +134,11 @@ class RestauranteController extends Controller
                     return view('clientes.restaurantes.show',compact('restaurante'));
                 }
                 if ($roleUser == 'admin') {
-                    return view('restaurantes.show',compact('restaurante'));
+                    $user = User::findOrFail($id);
+                    return view('restaurantes.show',compact('restaurante','user'));
+                }
+                if ($roleUser == 'restaurante') {
+                    return view('viewsRestaurantes.restaurantes.show',compact('restaurante'));
                 }
     }
 
@@ -117,12 +146,18 @@ class RestauranteController extends Controller
     {
                 // Obtenim un objecte Planet a partir del seu id
                 $restaurante = Restaurante::findOrFail($id);
+                $platos = [];
+                // carregue la vista i li passem el planeta que volem visualitzar
 
-                $restaurante = Restaurante::find(10);
-                echo $restaurante->plato->name;
+        if ( auth()->user()->role == 'restaurante' && auth()->user()->id == $restaurante->user_id) {
+            $platos = Plato::where('restaurante_id', $id)->get();
+            return view('viewsRestaurantes.platos.index',compact('platos'));
+        } else {
+            dd('error');
+        };
+        
 
-                // carreguem la vista i li passem el planeta que volem visualitzar
-                return view('restaurantes.show',compact('restaurante'));
+               // return view('restaurantes.show',compact('restaurante'));
     }
 
 
@@ -157,8 +192,8 @@ class RestauranteController extends Controller
         $restaurante->update($request->all());
 
     
-        return redirect()->route('restaurantes.index')
-                        ->with('success','Restaurante actualitzat correctament');
+        return redirect()->route('restaurantes.show', $restaurante->id)
+        ->with('success','Restaurante editat correctament.');
     }
 
     /**
@@ -171,15 +206,9 @@ class RestauranteController extends Controller
     {
                $restaurante = Restaurante::findOrFail($id);
 
-               try {
                    $result = $restaurante->delete();
                    
-               }
-               catch(\Illuminate\Database\QueryException $e) {
-                    return redirect()->route('restaurantes.index')
-                               ->with('error','Error esborrant el restaurant');
-               }   
-               return redirect()->route('restaurantes.index')
-                               ->with('success','Restaurant esborrat correctament.');    
+                   return redirect()->route('welcomeRestaurante')
+                   ->with('success','Restaurante eliminat correctament.');
     }
 }

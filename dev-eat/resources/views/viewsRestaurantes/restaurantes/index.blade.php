@@ -38,6 +38,8 @@
                 <td>                
                    <a href="{{ route('restaurantes.show',$restaurante->id) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
                 
+                   <a href="{{ route('restaurantes.edit',$restaurante->id) }}"><button type="button" class="btn btn-secondary">Actualizar</button></a> 
+                            
                    <a href="{{ route('restaurantes.destroy',$restaurante->id) }}"><button type="button" class="btn btn-danger">Borrar</button></a> 
                 
                             

@@ -22,7 +22,7 @@ class Pedido extends Model
 	// La taula per seguir convencions Laravel s'hauria d'haver anomenat superhero_superpower!!! 
       
    	return $this->belongsToMany(
-       		 Pedido::class,
+       		 Plato::class,
         	'pedido_plato');
        
      }

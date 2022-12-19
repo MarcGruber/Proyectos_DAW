@@ -1,19 +1,31 @@
 @extends('plantilla')
 @section('content')
-<h2>Fitxa Pedido</h2>
-  
-<div>          
-		Tornar
-	</a>
+<br>
+    
+
+<div>
+    @if (session('success'))
+        {{ session('success') }}
+            
+    @endif
+
+    @if (session('error'))           
+        {{ session('error') }}            
+    @endif
 </div>
 
 <div>
-	<strong>Fecha actualizacion: {{ $pedido->updated_at }}</strong>
-	
-	<table  class="table table-striped">
+    <a href="{{ route('platos.create') }}"><button type="button" class="btn btn-primary">Nou Plat</button></a> 
+
+</div>
+
+<br>    
+
+<div>
+    <table  class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Id zz {{$pedido->id}}</th>
+                <th scope="col">Id</th>
                 <th scope="col">Name</th>           
                 <th scope="col">Precio</th>
                 <th scope="col">Restaurante</th>
@@ -22,9 +34,8 @@
         </thead>
 
             <tbody>
-			@foreach ($platos as $plato)
-@if ($plato->restaurante_id == $pedido->restaurante_id)
-		
+            @foreach ($platos as $plato)
+            
        
                 
        
@@ -35,22 +46,21 @@
                 <td>{{$plato->restaurante_id}}</td>
                
                 <td>                
-					<a href="{{ route('AgregarPedidos.agregar',[$pedido->restaurante_id, $pedido->id, $plato->id]) }}"><button type="button" class="btn btn-success">Agregar</button></a> 
-					
                     <a href="{{ route('platos.show',$plato->id) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
+                 
                              
                     <a href="{{ route('platos.edit',$plato->id) }}"><button type="button" class="btn btn-secondary">Actualizar</button></a> 
                     
+                    <a href="{{ route('platos.destroy',$plato->id) }}"><button type="button" class="btn btn-danger">Borrar</button></a> 
                     
                 </td>
-				@endif
             </tr>
             @endforeach
         </tbody>
     </table>
-
-    
-
-
+       <div>
+       </div>   
 </div>
+
 @endsection
+

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -62,10 +63,40 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Usuario (restaurante, cliente)') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('*Tipo Usuario:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="email">
+                                         <select name="role">
+                                             <option value="cliente" selected>Cliente</option>
+                                             <option value="restaurante">Restaurante</option>
+                                            <option value="admin">Administrador</option>
+                                        </select>
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('**Clave Admin:') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="password" class="form-control @error('email') is-invalid @enderror" name="clave" >
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        *(admin, cliente, restaurante) <br>
+                        ** Solo Admin
+
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

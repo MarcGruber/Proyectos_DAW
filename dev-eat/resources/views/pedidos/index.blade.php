@@ -34,7 +34,7 @@
                 <td>{{ $pedido->precioTotal }}€</td>
                
                 <td>   
-                    <a href="{{ route('pedidos.show',$pedido->id) }}"><button type="button" class="btn btn-secondary">Agregar Platos</button></a>     
+                    <a href="{{ route('ClientePedidos.show',$pedido->id) }}"><button type="button" class="btn btn-secondary">Agregar Platos</button></a>     
                 
                    <a href="{{ route('pedidos.show',$pedido->id) }}"><button type="button" class="btn btn-secondary">Mostrar</button></a> 
                 

@@ -64,11 +64,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        if($data['role'] == 'admin' && $data['clave'] == 'Qwerty1234' || $data['role'] == 'cliente' || $data['role'] == 'restaurante'){
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
         ]);
+    } else {
+
+        return response('El rol no es valido', 200);
+    }
     }
 }
